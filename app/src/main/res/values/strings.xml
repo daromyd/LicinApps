@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">LicinApps</string>
+    <string name="app_name">Licin</string>
+    <string name="file_chooser_title">Choose File</string>
+    <string name="cannot_open_file_chooser_txt">Can\'t open file chooser</string>
+    <string name="camera_permission_granted_txt">Camera permission granted</string>
+    <string name="camera_permission_denied_txt">Camera permission denied</string>
+
+    <string name="txt_error">Maaf terjadi kesalahan koneksi.</string>
+    <string name="txt_swipe">Silahkan usap ke bawah atau restart aplikasi.</string>
 </resources>

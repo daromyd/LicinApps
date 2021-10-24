@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +16,10 @@ import com.example.licinapps.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
+    companion object{
+        private const val BASE_URL = "https://app.licin.love/"
+    }
 
     var uploadMessage:ValueCallback<Array<Uri>>? = null
     private val requestCode = 1
@@ -29,16 +34,34 @@ class MainActivity : AppCompatActivity() {
 
         initWebView()
         loadUrl()
+
+        binding.swipe.setOnRefreshListener {
+            binding.webView.reload()
+            hideError()
+            binding.swipe.isRefreshing = false
+        }
     }
 
     private fun loadUrl() {
-        binding.webView.loadUrl("https://www.licin.love/")
+        binding.webView.loadUrl(BASE_URL)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
+        CookieManager.getInstance().setAcceptThirdPartyCookies(binding.webView, true)
+
         binding.webView.apply {
-            webViewClient = WebViewClient()
+            webViewClient = object: WebViewClient(){
+                @SuppressLint("NewApi")
+                override fun onReceivedError(
+                    view: WebView?,
+                    request: WebResourceRequest?,
+                    error: WebResourceError?
+                ) {
+                    showError()
+                }
+            }
+
             settings.javaScriptEnabled = true
             settings.allowFileAccess = true
             settings.allowContentAccess = true
@@ -123,5 +146,16 @@ class MainActivity : AppCompatActivity() {
         } else{
             super.onBackPressed()
         }
+    }
+
+    private fun showError(){
+        binding.webView.visibility = View.GONE
+        binding.linearError.visibility = View.VISIBLE
+
+    }
+
+    private fun hideError(){
+        binding.linearError.visibility = View.GONE
+        binding.webView.visibility = View.VISIBLE
     }
 }
