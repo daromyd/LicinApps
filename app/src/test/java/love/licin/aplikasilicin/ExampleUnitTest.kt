@@ -1,4 +1,4 @@
-package com.example.licinapps
+package love.licin.aplikasilicin
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.licinapps
+package love.licin.aplikasilicin
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
@@ -12,7 +12,7 @@ import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.licinapps.databinding.ActivityMainBinding
+import love.licin.aplikasilicin.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {

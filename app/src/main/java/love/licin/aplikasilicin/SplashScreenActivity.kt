@@ -1,10 +1,10 @@
-package com.example.licinapps
+package love.licin.aplikasilicin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.example.licinapps.databinding.ActivitySplashScreenBinding
+import love.licin.aplikasilicin.databinding.ActivitySplashScreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
 
