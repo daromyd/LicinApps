@@ -52,6 +52,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.webView.apply {
             webViewClient = object: WebViewClient(){
+                override fun shouldOverrideUrlLoading(
+                    view: WebView?,
+                    request: WebResourceRequest?
+                ): Boolean {
+                    if (request?.url.toString().startsWith(BASE_URL) || request?.url.toString().startsWith("https://accounts.google.com")){
+                        return false
+                    }
+
+                    Intent(Intent.ACTION_VIEW, Uri.parse(request?.url.toString())).apply {
+                        startActivity(this)
+                    }
+                    return true
+                }
+
                 @SuppressLint("NewApi")
                 override fun onReceivedError(
                     view: WebView?,
